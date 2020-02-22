@@ -1,0 +1,40 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/Cellar/yarn/1.21.1/libexec/bin/yarn.js add apollo-server graphql
+
+PATH: 
+  /Users/sirwan/perl5/bin:node_modules/.bin:/Users/sirwan/bin:/usr/local/bin:/Users/sirwan/Library/Python/2.7/bin:/usr/local/share/npm/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/Sirwan/Library/Android/sdk/platform-tools:/usr/local/go/bin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Applications/Xamarin Workbooks.app/Contents/SharedSupport/path-bin:/Users/sirwan/anaconda3/bin:/usr/local/share/npm/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/Sirwan/Library/Android/sdk/platform-tools:/usr/local/go/bin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Applications/Xamarin Workbooks.app/Contents/SharedSupport/path-bin:/Users/sirwan/.rvm/bin
+
+Yarn version: 
+  1.21.1
+
+Node version: 
+  12.14.1
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/apollo-server: ESOCKETTIMEDOUT
+      at ClientRequest.<anonymous> (/usr/local/Cellar/yarn/1.21.1/libexec/lib/cli.js:141292:19)
+      at Object.onceWrapper (events.js:312:28)
+      at ClientRequest.emit (events.js:223:5)
+      at TLSSocket.emitRequestTimeout (_http_client.js:690:9)
+      at Object.onceWrapper (events.js:312:28)
+      at TLSSocket.emit (events.js:223:5)
+      at TLSSocket.Socket._onTimeout (net.js:474:8)
+      at listOnTimeout (internal/timers.js:531:17)
+      at processTimers (internal/timers.js:475:7)
+
+npm manifest: 
+  {
+    "name": "kungfu-api",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
