@@ -3,7 +3,7 @@ const { GraphQLScalarType } = require("graphql");
 const { Kind } = require("graphql/language");
 
 const typeDefs = gql`
-  scaler Data
+  scalar Date
 
   enum Status {
     WATCHED
@@ -20,7 +20,7 @@ const typeDefs = gql`
   type Movie {
     id: ID!
     title: String
-    releaseDate: Data
+    releaseDate: Date
     rating: Int!
     actors: [Actor]
     status: Status
