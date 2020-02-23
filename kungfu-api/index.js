@@ -26,6 +26,7 @@ const typeDefs = gql`
 
   type Query {
     movies: [Movie]
+    movie(id: ID): Movie
   }
 `;
 
@@ -49,6 +50,9 @@ const resolvers = {
   Query: {
     movies: () => {
       return movies;
+    },
+    movie: (obj, { id }, context, info) => {
+      return movies.find(m => m.id === id) || {};
     }
   }
 };
