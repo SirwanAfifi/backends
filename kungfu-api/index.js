@@ -22,7 +22,7 @@ const typeDefs = gql`
     title: String
     releaseDate: Date
     rating: Int!
-    actors: [Actor]
+    actors(id: ID): [Actor]
     status: Status
     # fake: Float
     # fake2: Boolean
@@ -82,7 +82,9 @@ const resolvers = {
       const filteredActors = actors.filter(actor =>
         actorIds.includes(actor.id)
       );
-      return filteredActors;
+      return args.id
+        ? filteredActors.filter(a => a.id === args.id)
+        : filteredActors;
     }
   },
   Date: new GraphQLScalarType({
