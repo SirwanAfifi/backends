@@ -32,6 +32,21 @@ const typeDefs = gql`
     movies: [Movie]
     movie(id: ID): Movie
   }
+
+  input ActorInput {
+    id: ID!
+  }
+  input MovieInput {
+    id: ID!
+    title: String
+    releaseDate: Date
+    rating: Int!
+    status: Status
+  }
+
+  type Mutation {
+    addMovie(movie: MovieInput!): [Movie]
+  }
 `;
 
 // Fake data
@@ -104,7 +119,13 @@ const resolvers = {
       }
       return null;
     }
-  })
+  }),
+  Mutation: {
+    addMovie(obj, { movie }, context) {
+      const newMoviesList = [...movies, movie];
+      return newMoviesList;
+    }
+  }
 };
 
 const server = new ApolloServer({
