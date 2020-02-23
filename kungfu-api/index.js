@@ -32,11 +32,13 @@ const typeDefs = gql`
 // Fake data
 const movies = [
   {
+    id: 1,
     title: "5 Deadly Venoms",
     releaseDate: "10-10-1983",
     rating: 5
   },
   {
+    id: 2,
     title: "36th Chamber",
     releaseDate: "10-10-1993",
     rating: 5
