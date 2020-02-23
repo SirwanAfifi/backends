@@ -14,10 +14,10 @@ const typeDefs = gql`
   }
 
   type Movie {
-    id: ID
+    id: ID!
     title: String
     releaseDate: String
-    rating: Int
+    rating: Int!
     actors: [Actor]
     status: Status
     # fake: Float
