@@ -35,18 +35,35 @@ const typeDefs = gql`
 `;
 
 // Fake data
+const actors = [
+  {
+    id: "brad",
+    name: "Bard Pitt"
+  }
+];
+
 const movies = [
   {
     id: 1,
     title: "5 Deadly Venoms",
     releaseDate: new Date("10-12-1983"),
-    rating: 5
+    rating: 5,
+    actors: [
+      {
+        id: "brad"
+      }
+    ]
   },
   {
     id: 2,
     title: "36th Chamber",
     releaseDate: new Date("10-10-1993"),
-    rating: 5
+    rating: 5,
+    actors: [
+      {
+        id: "brad"
+      }
+    ]
   }
 ];
 
@@ -57,6 +74,15 @@ const resolvers = {
     },
     movie: (obj, { id }, context, info) => {
       return movies.find(m => m.id === id) || {};
+    }
+  },
+  Movie: {
+    actors: (obj, args, context) => {
+      const actorIds = obj.actors.map(actor => actor.id);
+      const filteredActors = actors.filter(actor =>
+        actorIds.includes(actor.id)
+      );
+      return filteredActors;
     }
   },
   Date: new GraphQLScalarType({
