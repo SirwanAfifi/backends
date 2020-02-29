@@ -122,6 +122,7 @@ const resolvers = {
   }),
   Mutation: {
     addMovie(obj, { movie }, context) {
+      console.log("context", context);
       const newMoviesList = [...movies, movie];
       return newMoviesList;
     }
@@ -132,7 +133,16 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   introspection: true,
-  playground: true
+  playground: true,
+  // This is where we define our context
+  context: ({ req }) => {
+    const fakeUser = {
+      userId: "sirwanAfifi"
+    };
+    return {
+      ...fakeUser
+    };
+  }
 });
 
 server
