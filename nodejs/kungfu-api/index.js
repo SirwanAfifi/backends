@@ -121,10 +121,12 @@ const resolvers = {
     }
   }),
   Mutation: {
-    addMovie(obj, { movie }, context) {
-      console.log("context", context);
-      const newMoviesList = [...movies, movie];
-      return newMoviesList;
+    addMovie(obj, { movie }, { userId }) {
+      if (userId) {
+        const newMoviesList = [...movies, movie];
+        return newMoviesList;
+      }
+      return movies;
     }
   }
 };
