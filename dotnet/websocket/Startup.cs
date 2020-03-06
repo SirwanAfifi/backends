@@ -51,16 +51,20 @@ namespace websocket
                         for(;;)
                         {
                             await Task.Delay(1000);
-                            var model = modelNames.OrderBy(x => Guid.NewGuid()).FirstOrDefault();
-                            var rnd = new Random();
-                            var usage = rnd.Next(50);
-                            var ram = rnd.Next(500);
-                            var data = new {
-                                title = model,
-                                usage,
-                                ram
-                            };
-                            await SendMessageAsync(webSocket, JsonSerializer.Serialize(data));
+                            var items = Enumerable.Range(0, 12);
+                            foreach (var item in items)
+                            {
+                                var model = modelNames.OrderBy(x => Guid.NewGuid()).FirstOrDefault();
+                                var rnd = new Random();
+                                var usage = rnd.Next(50);
+                                var ram = rnd.Next(500);
+                                var data = new {
+                                    title = model,
+                                    usage,
+                                    ram
+                                };
+                                await SendMessageAsync(webSocket, JsonSerializer.Serialize(data));
+                            }
                         }
                     });
                 }
