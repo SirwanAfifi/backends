@@ -1,23 +1,25 @@
 const express = require("express");
 const router = express.Router();
 
-const Model = require("../../models/model");
+const mongoose = require("mongoose");
+const createNewModel = require("../../utils");
 
-// @route   POST api/dashboard
-// @desc    Create model
+// @route   GET api/dashboard
+// @desc    Fetch model types
 // @access  Public
-router.post("/", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
-    const { name } = req.body;
-    let model = new Model({
-      name
-    });
-    await model.save();
-    res.send("Model saved");
+    const fieldTypes = Object.keys(mongoose.SchemaTypes);
+    res.send(fieldTypes);
   } catch (err) {
     console.log(err.message);
     res.status(500).send("Server error");
   }
 });
+
+// @route   POST api/dashboard
+// @desc    Create model
+// @access  Public
+router.post("/", createNewModel);
 
 module.exports = router;
