@@ -4,6 +4,8 @@ const connectDB = require("./config/db");
 const app = epxress();
 connectDB();
 
+app.use(epxress.json({ extended: false }));
+
 app.get("/", (req, res) => {
   res.send("API is running");
 });
