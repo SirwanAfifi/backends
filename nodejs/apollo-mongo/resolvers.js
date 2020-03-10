@@ -1,8 +1,18 @@
+const { PubSub } = require("apollo-server");
 const { GraphQLScalarType } = require("graphql");
 const { Kind } = require("graphql/language");
 const Movie = require("./model");
 
+const pubsub = new PubSub();
+const MOVIE_ADDED = "MOVIE_ADDED";
+
 const resolvers = {
+  Subscription: {
+    movieAdded: {
+      subscribe: () => pubsub.asyncIterator([MOVIE_ADDED])
+    }
+  },
+
   Query: {
     movies: async () => {
       return await Movie.find({});
@@ -43,7 +53,8 @@ const resolvers = {
   Mutation: {
     async addMovie(obj, { movie }, { userId }) {
       if (userId) {
-        await Movie.create(movie);
+        const newMovie = await Movie.create(movie);
+        pubsub.publish(MOVIE_ADDED, { movieAdded: newMovie });
       }
       return await Movie.find({});
     }

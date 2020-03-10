@@ -45,6 +45,10 @@ const typeDefs = gql`
   type Mutation {
     addMovie(movie: MovieInput!): [Movie]
   }
+
+  type Subscription {
+    movieAdded: Movie
+  }
 `;
 
 module.exports = typeDefs;
