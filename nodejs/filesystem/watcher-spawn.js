@@ -8,6 +8,13 @@ if (!filename) {
 
 fs.watch(filename, () => {
   const ls = spawn("ls", ["-l", "-h", filename]);
-  ls.stdout.pipe(process.stdout);
+  let output = "";
+  // ls.stdout.pipe(process.stdout);
+  ls.stdout.on("data", chunk => (output += chunk));
+
+  ls.on("close", () => {
+    const parts = output.split(/\s+/);
+    console.log([parts[0], parts[4], parts[8]]);
+  });
 });
 console.log(`Now watching ${filename} for changes...`);
