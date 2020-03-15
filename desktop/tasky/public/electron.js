@@ -23,6 +23,10 @@ app.on("ready", () => {
       : `file://${path.join(__dirname, "../build/index.html")}`
   );
 
+  mainWindow.on("blur", () => {
+    mainWindow.hide();
+  });
+
   const iconName = process.platform === "win32" ? "icon.png" : "icon.png";
   const iconPath = path.join(__dirname, `./${iconName}`);
   tray = new Tray(iconPath);
