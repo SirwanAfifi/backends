@@ -6,6 +6,8 @@ class AppTray extends Tray {
     super(iconPath);
 
     this.mainWindow = mainWindow;
+
+    this.setToolTip("AppTray app");
     this.on("click", this.onClick);
   }
 
