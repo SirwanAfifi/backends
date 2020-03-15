@@ -1,7 +1,8 @@
 const path = require("path");
 const electron = require("electron");
 
-const { app, BrowserWindow, ipcMain, Tray } = electron;
+const AppTray = require("../app/app_tray");
+const { app, BrowserWindow } = electron;
 
 const isDev = require("electron-is-dev");
 
@@ -29,22 +30,5 @@ app.on("ready", () => {
 
   const iconName = process.platform === "win32" ? "icon.png" : "icon.png";
   const iconPath = path.join(__dirname, `./${iconName}`);
-  tray = new Tray(iconPath);
-  tray.on("click", (event, bounds) => {
-    const { x, y } = bounds;
-    const { height, width } = mainWindow.getBounds();
-
-    if (mainWindow.isVisible()) {
-      mainWindow.hide();
-    } else {
-      const yPosition = process.platform === "darwin" ? y : y - height;
-      mainWindow.setBounds({
-        x: x - width / 2,
-        y: yPosition,
-        height,
-        width
-      });
-      mainWindow.show();
-    }
-  });
+  tray = new AppTray(iconPath, mainWindow);
 });
