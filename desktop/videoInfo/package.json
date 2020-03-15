@@ -1,0 +1,15 @@
+{
+  "name": "videoInfo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "keywords": [],
+  "author": "Sirwan Afifi <sir1afifi@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^8.1.1"
+  }
+}
