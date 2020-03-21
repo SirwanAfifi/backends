@@ -1,7 +1,14 @@
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+
 namespace signalr
 {
-    public class homeController
+    [Authorize]
+    public class homeController : Controller
     {
-        
+        public IActionResult Index()
+        {
+            return Content("This is a secret page");
+        }
     }
 }
