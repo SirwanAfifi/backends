@@ -15,6 +15,7 @@ fs.readFileSync(`${dirName}/0.txt`)
       `${index}. ${name
         .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "")
         .replace("\r", "")
+        //.substring(2)
         .trim()}.mp4`
     );
     items.push(fileName);
