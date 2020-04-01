@@ -5,6 +5,7 @@ const sequelize = require("./database");
 
 // Import Models
 const Product = require("./models/product");
+const People = require("./models/person");
 
 sequelize
   .sync()
