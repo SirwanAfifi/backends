@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option csharp_namespace = "web.Services";
+
+service Service {
+    rpc AddReading (ReadingMessage) returns (StatusMessage)
+}
+
+message ReadingMessage {
+    int32 customerId = 1;
+    int32 readingValue = 2;
+    string notes = 3;
+    bool successful = 4;
+}
+
+message StatusMessage {
+    string message = 1;
+    bool success = 2;
+}
