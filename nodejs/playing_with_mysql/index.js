@@ -6,10 +6,11 @@ const sequelize = require("./database");
 // Import Models
 const User = require("./models/User");
 const Post = require("./models/Post");
+const Comment = require("./models/Comment");
 
-Post.belongsTo(User); // Adds FK userId in Post
+Comment.belongsTo(Post);
+Post.hasMany(Comment);
+Post.belongsTo(User);
+User.hasMany(Post);
 
-sequelize
-  .sync()
-  .then((result) => console.log(result))
-  .catch((err) => console.log(err));
+sequelize.sync().catch((err) => console.log(err));

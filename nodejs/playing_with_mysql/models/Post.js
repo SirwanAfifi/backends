@@ -3,11 +3,14 @@ const Sequelize = require("sequelize");
 const sequelize = require("../database");
 const Post = sequelize.define("Post", {
   id: {
-    primaryKey: true,
     type: Sequelize.UUID,
+    primaryKey: true,
     defaultValue: Sequelize.UUIDV4,
+    allowNull: false,
   },
-  title: Sequelize.STRING,
-  content: Sequelize.TEXT,
+  content: {
+    type: Sequelize.TEXT,
+    required: true,
+  },
 });
 module.exports = Post;
