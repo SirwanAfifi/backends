@@ -1,0 +1,20 @@
+{
+  "name": "generate_schema",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon index.ts"
+  },
+  "dependencies": {
+    "@types/mysql": "^2.15.10",
+    "@types/node": "^13.13.4",
+    "dotenv": "^8.2.0",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.3"
+  },
+  "devDependencies": {
+    "ts-node": "^8.9.1",
+    "typescript": "^3.8.3"
+  }
+}
