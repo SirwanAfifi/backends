@@ -12,20 +12,25 @@ namespace fp
         private static Func<int, int> Adder = x => x += value;
         static void Main(string[] args)
         {
-            var result = numbers.Sum(Adder);
-            Console.WriteLine(result);
-
-            var counter = CreateCounter();
-            var num1 = counter();
-            var num2 = counter();
-            var num3 = counter();
-            System.Console.WriteLine(num3);
+            var a = MyClosure();
+            Console.WriteLine(a(10));
+            Console.WriteLine(a(10));
+            Console.WriteLine(a(10));
         }
 
         static Func<int> CreateCounter()
         {
             var num = 0;
             return () => num++;
+        }
+
+        static Func<int, int> MyClosure()
+        {
+            int val = 0;
+            return (int input) =>
+            {
+                return val += input;
+            };
         }
     }
 }
