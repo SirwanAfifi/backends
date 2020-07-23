@@ -14,9 +14,21 @@ namespace fp
     {
         private static IList<int> numbers = Enumerable.Range(1, 20).ToList();
         private static Func<int, int> Adder = x => x += value;
+
+        static int x = 5;
+        static void Foo()
+        {
+            Console.WriteLine(x);
+        }
+        static void Bar()
+        {
+            x = 10;
+            Foo();
+        }
+
         public static async Task Main(string[] args)
         {
-            Func<Task<string>> user = GetRandomUser;
+            /*Func<Task<string>> user = GetRandomUser;
             var cached = user.Cache(10);
             Console.WriteLine(await cached());
             Console.WriteLine(await cached());
@@ -24,7 +36,10 @@ namespace fp
             Thread.Sleep(10000);
             Console.WriteLine(await cached());
             Console.WriteLine(await cached());
-            Console.WriteLine(await cached());
+            Console.WriteLine(await cached());*/
+
+            Foo();
+            Bar();
         }
 
         static async Task<string> GetRandomUser()
