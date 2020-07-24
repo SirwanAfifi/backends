@@ -22,24 +22,29 @@ namespace fp
         }
         static void Bar()
         {
+            ((Action)(() =>
+            {
+                Console.WriteLine("IIFE");
+            }))();
+
             x = 10;
             Foo();
         }
 
-        public static async Task Main(string[] args)
+        public static void Main(string[] args)
         {
-            /*Func<Task<string>> user = GetRandomUser;
-            var cached = user.Cache(10);
-            Console.WriteLine(await cached());
-            Console.WriteLine(await cached());
-            Console.WriteLine(await cached());
-            Thread.Sleep(10000);
-            Console.WriteLine(await cached());
-            Console.WriteLine(await cached());
-            Console.WriteLine(await cached());*/
-
-            Foo();
-            Bar();
+            var a = ((Func<string, string>)((string input1) =>
+            {
+                return ((Func<string, string>)((string input2) =>
+                {
+                    return ((Func<string>)(() =>
+                    {
+                        input2 = "Sirwan";
+                        return input2;
+                    }))();
+                }))("World");
+            }))("Hello");
+            Console.WriteLine(a);
         }
 
         static async Task<string> GetRandomUser()
