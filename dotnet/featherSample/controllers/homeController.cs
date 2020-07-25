@@ -1,15 +1,18 @@
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
 
 namespace featherSample
 {
     public class HomeController
     {
-        public async Task GetTodos(HttpContext http)
+        private readonly ITodoService _todoService;
+
+        public HomeController(ITodoService todoService)
         {
-            var todos = new Todos();
-            await http.Response.WriteJsonAsync(todos.GetAll());
+            _todoService = todoService;
         }
+
+        [HttpGet("/")]
+        public IList<Todo> HelloWorld() => _todoService.GetAll();
     }
 }

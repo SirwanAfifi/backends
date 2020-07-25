@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace featherSample
 {
@@ -8,9 +9,15 @@ namespace featherSample
     {
         static async Task Main(string[] args)
         {
-            var app = WebApplication.Create(args);
+            var builder = WebApplication.CreateBuilder(args);
 
-            app.MapGet("/", new HomeController().GetTodos);
+            builder.Services.AddControllers();
+
+            builder.Services.AddTransient<ITodoService, TodoService>();
+
+            var app = builder.Build();
+
+            app.MapControllers();
 
             await app.RunAsync();
         }
