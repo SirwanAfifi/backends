@@ -14,20 +14,6 @@ const long_running_task = () => {
   return users;
 };
 setTimeout(startTimer, 0);
-Promise.resolve().then((_) => console.log("API"));
+fetch("").then(display);
 long_running_task();
 console.log("Global Code");
-
-const newPromiseA = new Promise((resolve, reject) => {
-  setTimeout(() => resolve("Resolved!"), 1000);
-});
-
-newPromiseA.then(console.log);
-
-const newPromiseB = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    reject("Rejected!");
-  }, 2000);
-});
-
-newPromiseB.then(console.log);
