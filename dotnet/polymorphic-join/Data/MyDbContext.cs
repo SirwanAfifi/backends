@@ -1,14 +1,15 @@
 using Microsoft.EntityFrameworkCore;
-using polymorphic_join.Models;
 
-namespace polymorphic_join.Data
+namespace polymorphic_join.Models
 {
     public class MyDbContext : DbContext
     {
-        public DbSet<Company> Companies { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<Order> Orders { get; set; }
+        public DbSet<Article> Articles { get; set; }
+        public DbSet<Video> Videos { get; set; }
+        public DbSet<Event> Events { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlite("Data Source=sqlitedemo.db");
+            => options.UseSqlite("Data Source=polymorphic.db");
     }
 }
