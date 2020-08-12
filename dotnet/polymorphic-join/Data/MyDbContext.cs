@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using polymorphic_join.Models;
 
-namespace polymorphic_join.Models
+namespace polymorphic_join.Data
 {
     public class MyDbContext : DbContext
     {
