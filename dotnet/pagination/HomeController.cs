@@ -1,3 +1,4 @@
+using System.IO;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,8 +8,15 @@ namespace pagination
     {
         public IActionResult Index(int offset = 0, int limit = 3)
         {
-            var names = new[] {"Sirwan", "Kaywan", "Kaveh", "Ali", "Hamed", "Shaho", "Sattar", "Behzad"};
-            return Json(names.Skip(limit * (offset - 1))
+            var fileName = $"employees.txt";
+            var path = Path.Combine(  
+                Directory.GetCurrentDirectory(), "wwwroot",   
+                fileName);  
+            var fileBytes = System.IO.File.ReadAllBytes(path);
+            
+            var result = System.Text.Encoding.UTF8.GetString(fileBytes).Split();
+
+            return Json(result.Skip(limit * (offset - 1))
                 .Take(limit));
         }
     }
