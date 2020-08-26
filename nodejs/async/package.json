@@ -1,0 +1,10 @@
+{
+  "name": "async",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node-fetch": "^2.5.7",
+    "node-fetch": "^2.6.0"
+  }
+}
