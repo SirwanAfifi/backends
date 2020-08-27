@@ -14,7 +14,6 @@ const long_running_task = () => {
   return users;
 };
 setTimeout(startTimer, 0);
-const placeholder = fetch("http://localhost:3000/data");
-placeholder.then(display);
+Promise.resolve().then((_) => console.log("API"));
 long_running_task();
 console.log("Global Code");
