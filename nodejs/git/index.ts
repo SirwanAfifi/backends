@@ -1,8 +1,12 @@
 class Git {
-  constructor(private name: string, private lastCommitId: number = -1) {}
+  private lastCommitId: number = -1;
+  private HEAD = null;
+  constructor(private name: string) {}
 
   commit(message: string) {
-    const commit = new Commit(++this.lastCommitId, message);
+    const commit = new Commit(++this.lastCommitId, this.HEAD, message);
+
+    this.HEAD = commit;
     return commit;
   }
 
@@ -14,5 +18,9 @@ class Git {
 }
 
 class Commit {
-  constructor(private id: number, private message: string) {}
+  constructor(
+    private id: number,
+    private parent: string,
+    private message: string
+  ) {}
 }
