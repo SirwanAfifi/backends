@@ -11,7 +11,13 @@ class Git {
   }
 
   log() {
-    const history = [];
+    let commit = this.HEAD,
+      history = [];
+
+    while (commit) {
+      history.push(commit);
+      commit = commit.parent;
+    }
 
     return history;
   }
