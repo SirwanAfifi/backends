@@ -24,4 +24,10 @@ const newPromiseA = new Promise((resolve, reject) => {
 
 newPromiseA.then(console.log);
 
-const newPromiseB = new Promise((resolve, reject) => {});
+const newPromiseB = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    reject("Rejected!");
+  }, 2000);
+});
+
+newPromiseB.then(console.log);
