@@ -18,5 +18,10 @@ Promise.resolve().then((_) => console.log("API"));
 long_running_task();
 console.log("Global Code");
 
-const newPromiseA = new Promise((resolve, reject) => {});
+const newPromiseA = new Promise((resolve, reject) => {
+  setTimeout(() => resolve("Resolved!"), 1000);
+});
+
+newPromiseA.then(console.log);
+
 const newPromiseB = new Promise((resolve, reject) => {});
